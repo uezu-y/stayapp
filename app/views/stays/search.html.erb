@@ -1,0 +1,29 @@
+<div class="container-fiuld reservations">
+  <h4 class="pb-4">検索結果：<%= @stays.count %>件</h4>
+    <% if @stays.present? %>
+　　  <table>
+    　  <thead>
+    　　  <tr align="center">
+        　  <th>ルーム画像</th>
+        　  <th>ルーム名</th>
+        　  <th>場所</th>
+        　  <th>料金</th>
+        　  <th>削除</th>
+          </tr>
+    　  </thead>
+        
+        <tbody>
+    　     <% @stays.each do |stay| %>
+            <tr>
+              <td>
+                <image src=" <%= stay.img %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image">
+              </td>
+              <td class="posts-name"><%= link_to "#{stay.room}", {controller: 'reservations', action: 'new', id: stay.id} %></td>
+              <td class="posts-content"><%= stay.address %></td>
+              <td class="price-icon"><%= stay.price %></td>   
+            </tr>
+    　     <% end %>
+    　  </tbody>
+      </table>
+    <% end %>
+</div>

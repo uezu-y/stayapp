@@ -5,12 +5,75 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= javascript_pack_tag 'application' %>
+    <header class="header">
+       <div class="header-left-nav">
+         <a href="https://c3987285d62144348f15d3d73000329f.vfs.cloud9.ap-northeast-1.amazonaws.com/stays">
+         　<img alt="サイトのロゴ画像" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png">
+         </a>
+            
+          <div class="header-sharch d-lg-inline-block d-none">
+            <%= form_tag(search_stays_path, :method =>'get') do %>
+            <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"エリア" %> 
+            <i class="fas fa-map-marker-alt"></i>
+            <%= submit_tag '',class:"d-none" %>
+            <% end %>
+          </div> 
+         
+          <div class="header-sharch d-lg-inline-block d-none">
+            <%= form_tag(search_stays_path, :method =>'get') do %>
+            <%= text_field_tag :keyword, params[:keyword], class: "form-control", placeholder:"キーワード" %>  
+            <i class="fas fa-search"></i> 
+            <%= submit_tag '',class:"d-none" %>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="header-rignt-nav-a" >
+        <div class="nav-item">
+           <% if user_signed_in? %>
+              <div class="nav-item d-sm-inline-block ">
+                <%= current_user.email %>
+              </div>
+              <div class="nav-item">
+                <img id="menu" class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg">               
+                <ul class="header-nav-menu" >
+                  <li class="menu_li"><%= link_to "ルーム登録", new_stay_path %></li>
+                  <li class="menu_li"><%= link_to "予約済みルーム一覧", reservations_path %></li>
+                  <li class="menu_li"><%= link_to "登録済みルーム一覧",stays_insear_path%></li>
+                  <li class="menu_li"><%= link_to "設定", users_index_path %></li>
+                  <li class="menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </div>
+           <% else %>
+             <%= link_to "ログイン",new_user_session_path, class:"btn btn-primary my-2 mx-3" %>
+             <%= link_to "登録する",new_user_registration_path, class:"btn btn-secondary" %>
+           <% end %>
+    　 
+    　 <script src="https://code.jquery.com/jquery.min.js"></script>
+    　 <script>
+    　    $(function(){
+           $(".nav-trigger").click(function() {
+             $(".header-nav-menu").toggleClass("block");
+              });
+            });
+    　 </script>
+    　 </div>
+      </div>
+    　
+    </header>
+      <div class="notifications">
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+      </div>
+    
     <%= yield %>
+    
   </body>
 </html>

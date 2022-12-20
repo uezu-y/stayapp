@@ -1,0 +1,47 @@
+<div class="container-fiuld user">
+  <div class="row-ab">
+    <div class="col-md-12 user-view">
+      <div class="user-view-box">
+            
+        <%= form_with model: @reservation do |f| %>
+          <div  class="update-content">
+            <div class="row-ab">
+              <%= f.label :room ,"予約したお部屋" ,class:"col-md-3" %><br>
+                <div class="col-md-9">
+                  <%= @reservation.stay.room %>
+                </div>
+            </div>
+          </div>
+
+          <div  class="update-content">
+            <div class="row-ab">
+              <%= f.label :startdate ,"開始日" ,class:"col-md-3" %><br>
+                <div class="col-md-9">
+                  <%= @reservation.startdate.strftime('%Y年%m月%d日') %>
+                </div>
+            </div>
+          </div>
+
+          <div  class="update-content">
+            <div class="row-ab">
+              <%= f.label :enddate ,"終了日" ,class:"col-md-3" %><br>
+                <div class="col-md-9">
+                  <%= @reservation.enddate.strftime('%Y年%m月%d日') %>
+                </div>
+            </div>
+          </div>
+
+          <div  class="update-content">
+            <div class="row-ab">
+              <%= f.label :price ,"価格" ,class:"col-md-3" %><br>
+                <div class="col-md-9">
+                  <%= @reservation.total_amount %>円
+                </div>
+            </div>
+          </div>
+        <% end %>    
+      </div>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,111 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.device_frame {
+    max-width: 600px;
+    text-align: center;
+    padding: 24px;
+    margin: 0px auto;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow:0px 1px 3px 0px rgba(166,168,176,0.6) ;
+}
+
+.device {
+    padding-top: 36px;
+    font-size: 16px;
+}
+
+.device_inner {
+    margin: auto;
+    width: 360px;
+}
+
+div.field, div.actions {
+    margin-bottom: 10px;
+}
+
+.required-b::before {
+    content: "必須";
+    color: #fff;
+    background-color: #ff0000a8;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0 5px;
+    white-space: pre;
+}
+
+.required-a::after {
+    content: "必須";
+    color: #fff;
+    background-color: #ff0000a8;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 0 5px;
+    white-space: pre;
+}
+
+.user .user-nav-mobile .active {
+    border-bottom: 3px solid #4a90e2;
+}
+
+.user .user-nav-mobile li {
+    float: left;
+}
+
+.user .user-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+}
+
+.user .user-nav li {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.user .user-nav-mobile .active a {
+    color: #4a90e2;
+ }
+ 
+
+
+.device a {
+    color: #007bff !important;
+}
+
+.user .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.user .user-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 30px auto;
+}
+
+.user .update-content label {
+    font-weight: bold;
+}
+
+.user .user-nav li a:hover {
+    color: #4a90e2; 
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    text-decoration: none;
+    color: #333333;
+}
+
+.user .icon-box {
+    text-align: center;
+}

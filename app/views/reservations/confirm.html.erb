@@ -1,0 +1,37 @@
+<div class="container reservations-new">
+  <div class="row-row">
+    <div class="offset-3">
+      <div class="reservations-new-nav-b">
+        <h4 class="reservations-new-check-content">予約内容確認</h4>
+          <%= form_with model:@reservation do |f| %>
+            <%= f.hidden_field :number %>
+            <%= f.hidden_field :stay_id %>
+            <%= f.hidden_field :stay_id, :value => @stay.id %>
+            <%= f.hidden_field :user_id, :value => @user.id %>
+
+        <div class="reservations-new-date-selsct">
+            <%= f.label :startdate ,"開始日" %><br>
+            <%= f.hidden_field :startdate %>
+            <%= f.text_field :startdate, class:"form-control col-md-9 mb-4",:readonly => true %>
+            <%= f.label :enddate ,"終了日" %><br>
+            <%= f.hidden_field :enddate %>
+            <%= f.text_field :enddate, class:"form-control col-md-9 mb-4",:readonly => true %>
+                            
+            <h6 class="reservations-new-check-content">使用日数 : <%= @reservation.totaldays %>日</h6>
+            <%= f.hidden_field :totaldays  %>
+            <h6 class="reservations-new-check-content">人数 : <%= @reservation.number %>人</h6>
+
+            <%= f.label :total_amount ,"合計金額" %><br>
+            <%= f.hidden_field :total_amount %>
+            <%= f.text_field :total_amount, class:"form-control col-md-9 mb-4",:readonly => true %>
+
+            <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
+                            
+            <%= f.submit "予約を確定" ,class:"col-md-2 btn btn-primary my-3 form-control form-btn"%>
+            <%= link_to "ルーム詳細に戻る",:back ,class:"btn btn-secondary form-control"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

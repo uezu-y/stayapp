@@ -1,0 +1,42 @@
+<div class="container room-show">
+  <div class="row-a">
+    <div class="col-md-8">
+      <image src=" <%= @stay.img %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="room-show-image">
+        <div class="room-show-detile">
+          <div class="room-show-detile-icon">
+              <%=link_to root_path do %>
+                <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon.jpg" class="host-icon">
+              <% end %>
+          </div>
+          <div class="room-show-profile">
+            <p class="room-show-profile-name">
+              <%= @stay.room %>
+            </p>
+            <p class="room-show-profile-address">
+              <%= @stay.address %>
+            </p>
+          </div>
+        </div>
+        <p class="room-show-detile-content">
+          <%= @stay.introduction %>
+        </p>
+    </div>
+
+    <div class="col-md-4">
+      <div class="room-show-nav">
+        <%= form_with model:@reservations, url:confirm_reservations_path(@stay) do |f| %>
+          <%= f.hidden_field :stay_id, :value => @stay.id %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <h5 class="price-icon"><%= @stay.price %> / 日</h5>
+          <%= f.label :startdate ,"開始日"%>
+          <%= f.date_field :startdate ,class:"form-control mb-4" %>
+          <%= f.label :enddate ,"終了日"%>
+          <%= f.date_field :enddate ,class:"form-control mb-4" %>
+          <%= f.label :number ,"人数"%>
+          <%= f.number_field :number ,class:"form-control mb-4" %>
+          <%= f.submit "予約する",class:"form-control btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>    
+  </div>
+</div>
