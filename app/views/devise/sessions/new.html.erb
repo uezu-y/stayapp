@@ -3,7 +3,6 @@
     <p class="my-4">ログイン</p>
     <div class="device_inner">
      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        
         <div class="field form-row">
           <div class="col-2 required-b pt-2"></div>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control col-10 px-2",placeholder:"メールアドレス" %>
