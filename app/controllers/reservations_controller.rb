@@ -4,16 +4,17 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
   
+  #確認画面
   def confirm
     @user = current_user
     @stay = Stay.find(params[:format])
     @reservation = Reservation.new(reservation_paramas)
-    if @reservation.invalid? #入力項目に空のものがあれば入力画面に遷移
+    if @reservation.invalid?    #入力項目に空のものがあれば入力画面に遷移する
       @stay = @reservation.stay
       render "new" 
     else
       @reservation.totaldays = (@reservation.enddate - @reservation.startdate).to_i
-      @reservation.total_amount = (@stay.price * @reservation.totaldays * @reservation.number).to_i
+      @reservation.total_amount = (@stay.price * @reservation.totaldays * @reservation.number).to_i.      #合計金額の計算
     end
   end
   
@@ -25,7 +26,7 @@ class ReservationsController < ApplicationController
   
   def create
     @reservation = Reservation.new(params.require(:reservation).permit(:stay_id, :user_id, :startdate, :enddate, :number,:total_amount, :totaldays))
-     if params[:back] || !@reservation.save #戻るボタンを押したときまたは、@eventが保存されなかったらnewアクションを実行
+     if params[:back] || !@reservation.save   #戻るボタンを押したときまたは、@reservationが保存されなかったらnewアクションを実行
         render "new"
      else
        redirect_to  reservation_path(@reservation), notice: "予約が完了しました"
