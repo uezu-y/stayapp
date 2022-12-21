@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :name, presence: true
-  validates :self_introduction, presence: true
   has_one_attached :image
          
   has_many :stays
