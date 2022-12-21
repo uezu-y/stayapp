@@ -19,9 +19,11 @@ class ReservationsController < ApplicationController
   end
   
   def new
+    binding.pry
     @user = current_user
     @stay = Stay.find(params[:id])
     @reservation = Reservation.new
+    binding.pry
   end
   
   def create
@@ -51,4 +53,5 @@ class ReservationsController < ApplicationController
   def reservation_paramas
      params.permit(:stay_id, :user_id, :startdate, :enddate, :number)
   end
+end
 end
