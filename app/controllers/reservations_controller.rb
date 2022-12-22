@@ -14,21 +14,19 @@ class ReservationsController < ApplicationController
       render "new" 
     else
       @reservation.totaldays = (@reservation.enddate - @reservation.startdate).to_i
-      @reservation.total_amount = (@stay.price * @reservation.totaldays * @reservation.number).to_i.      #合計金額の計算
+      @reservation.total_amount = (@stay.price * @reservation.totaldays * @reservation.number).to_i
     end
   end
   
   def new
-    binding.pry
     @user = current_user
     @stay = Stay.find(params[:id])
     @reservation = Reservation.new
-    binding.pry
   end
   
   def create
     @reservation = Reservation.new(params.require(:reservation).permit(:stay_id, :user_id, :startdate, :enddate, :number,:total_amount, :totaldays))
-     if params[:back] || !@reservation.save   #戻るボタンを押したときまたは、@reservationが保存されなかったらnewアクションを実行
+     if params[:back] || !@reservation.save  #戻るボタンを押したときまたは、@reservationが保存されなかったらnewアクションを実行
         render "new"
      else
        redirect_to  reservation_path(@reservation), notice: "予約が完了しました"
@@ -53,5 +51,4 @@ class ReservationsController < ApplicationController
   def reservation_paramas
      params.permit(:stay_id, :user_id, :startdate, :enddate, :number)
   end
-end
 end
