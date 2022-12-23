@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startdate: 2022-12-13
+  enddate: 2022-12-13
+  number: 1
+  total_amount: 1
+  totaldays: 1
+  roomstay_id: 1
+  user_id: MyString
+
+two:
+  startdate: 2022-12-13
+  enddate: 2022-12-13
+  number: 1
+  total_amount: 1
+  totaldays: 1
+  roomstay_id: 1
+  user_id: MyString
